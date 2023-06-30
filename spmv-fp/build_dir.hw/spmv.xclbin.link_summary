@@ -1,0 +1,1369 @@
+<ENTRY>
+{
+ "thisFile": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/spmv.xclbin.link_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Tue Mar 21 01:07:27 2023",
+ "timestampMillis": "1679375247673",
+ "buildStep": {
+  "cmdId": "3463f5ca-98ba-4e14-99d8-f435d030faf6",
+  "name": "v++",
+  "logFile": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/link.steps.log",
+  "commandLine": "/tools/Xilinx/Vitis/2021.2/bin/unwrapped/lnx64.o/v++  --vivado.prop \"run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS}={-directive sdx_optimization_effort_high}\" --vivado.prop \"run.impl_1.{STEPS.PLACE_DESIGN.ARGS.MORE OPTIONS}={-retiming}\" --vivado.prop run.impl_1.STEPS.PHYS_OPT_DESIGN.IS_ENABLED=true --vivado.prop run.impl_1.STEPS.POST_ROUTE_PHYS_OPT_DESIGN.IS_ENABLED=true --advanced.misc \"report=type report_timing_summary name impl_report_timing_summary_route_design_summary steps {route_design} runs {impl_1} options {-max_paths 10}\" --advanced.misc \"report=type report_timing_summary name impl_report_timing_summary_post_route_phys_opt_design_summary steps {post_route_phys_opt_design} runs {impl_1} options {-max_paths 10}\" -t hw --platform /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --save-temps -I./libfpga -DFP_STALL --temp_dir ./build_dir.hw -l --optimize 3 --config spmv.ini -obuild_dir.hw/spmv.xclbin _x.hw/spmv_sk0.xo _x.hw/spmv_sk1.xo _x.hw/spmv_sk2.xo _x.hw/spmv_vector_loader.xo _x.hw/spmv_result_drain.xo _x.hw/k2k_relay.xo ",
+  "args": [
+   "-t",
+   "hw",
+   "--platform",
+   "/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm",
+   "--save-temps",
+   "-I./libfpga",
+   "-DFP_STALL",
+   "--temp_dir",
+   "./build_dir.hw",
+   "-l",
+   "--optimize",
+   "3",
+   "--config",
+   "spmv.ini",
+   "-obuild_dir.hw/spmv.xclbin",
+   "_x.hw/spmv_sk0.xo",
+   "_x.hw/spmv_sk1.xo",
+   "_x.hw/spmv_sk2.xo",
+   "_x.hw/spmv_vector_loader.xo",
+   "_x.hw/spmv_result_drain.xo",
+   "_x.hw/k2k_relay.xo"
+  ],
+  "iniFiles": [
+   {
+    "path": "/home/gdubey/Documents/HiSparse/spmv-fp/spmv.ini",
+    "content": "[connectivity]\nnk=spmv_sk0:1:SK0\nnk=spmv_sk1:1:SK1\nnk=spmv_sk2:1:SK2\nnk=spmv_vector_loader:1:VL\nnk=spmv_result_drain:1:RD\nnk=k2k_relay:2:relay_SK2_vin.relay_SK2_rout\nslr=SK0:SLR0\nslr=SK1:SLR1\nslr=SK2:SLR2\nslr=VL:SLR0\nslr=RD:SLR0\nslr=relay_SK2_vin:SLR1\nslr=relay_SK2_rout:SLR1\nsp=SK0.matrix_hbm_0:HBM[0]\nsp=SK0.matrix_hbm_1:HBM[1]\nsp=SK0.matrix_hbm_2:HBM[2]\nsp=SK0.matrix_hbm_3:HBM[3]\nsp=SK1.matrix_hbm_4:HBM[4]\nsp=SK1.matrix_hbm_5:HBM[5]\nsp=SK1.matrix_hbm_6:HBM[6]\nsp=SK1.matrix_hbm_7:HBM[7]\nsp=SK1.matrix_hbm_8:HBM[8]\nsp=SK1.matrix_hbm_9:HBM[9]\nsp=SK2.matrix_hbm_10:HBM[10]\nsp=SK2.matrix_hbm_11:HBM[11]\nsp=SK2.matrix_hbm_12:HBM[12]\nsp=SK2.matrix_hbm_13:HBM[13]\nsp=SK2.matrix_hbm_14:HBM[14]\nsp=SK2.matrix_hbm_15:HBM[15]\nsp=VL.packed_dense_vector:HBM[20:21]\nsp=RD.packed_dense_result:HBM[20:21]\nsc=VL.to_SLR0:SK0.vec_in:32\nsc=VL.to_SLR1:SK1.vec_in:32\nsc=VL.to_SLR2:relay_SK2_vin.in:32\nsc=relay_SK2_vin.out:SK2.vec_in:32\nsc=SK0.res_out:RD.from_SLR0:32\nsc=SK1.res_out:RD.from_SLR1:32\nsc=SK2.res_out:relay_SK2_rout.in:32\nsc=relay_SK2_rout.out:RD.from_SLR2:32\n"
+   }
+  ],
+  "cwd": "/home/gdubey/Documents/HiSparse/spmv-fp"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 01:07:27 2023",
+ "timestampMillis": "1679375247673",
+ "status": {
+  "cmdId": "3463f5ca-98ba-4e14-99d8-f435d030faf6",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Tue Mar 21 01:08:07 2023",
+ "timestampMillis": "1679375287619",
+ "buildSummary": {
+  "hardwarePlatform": "xilinx_u280_xdma_201920_3.xpfm",
+  "hardwareDsa": "xilinx_u280_xdma_201920_3.xsa",
+  "platformDirectory": "/opt/xilinx/platforms/xilinx_u280_xdma_201920_3",
+  "runtime": "OpenCL",
+  "systemConfig": "Linux",
+  "flow": "BF_LINK",
+  "target": "TT_HW",
+  "binaryContainer": {
+   "base": {
+    "type": "BT_UKNOWN",
+    "name": "spmv",
+    "file": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/spmv.xclbin",
+    "reports": [],
+    "uuid": ""
+   },
+   "kernels": []
+  },
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "spmv_sk0",
+     "file": "/home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/spmv_sk0.xo",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/spmv_sk0/spmv_sk0/cpu_sources/spmv_sk0.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [
+     "SK0"
+    ],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   },
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "spmv_sk1",
+     "file": "/home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/spmv_sk1.xo",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/spmv_sk1/spmv_sk1/cpu_sources/spmv_sk1.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [
+     "SK1"
+    ],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   },
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "spmv_sk2",
+     "file": "/home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/spmv_sk2.xo",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/spmv_sk2/spmv_sk2/cpu_sources/spmv_sk2.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [
+     "SK2"
+    ],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   },
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "spmv_vector_loader",
+     "file": "/home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/spmv_vector_loader.xo",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/spmv_vector_loader/spmv_vector_loader/cpu_sources/spmv_vector_loader.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [
+     "VL"
+    ],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   },
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "spmv_result_drain",
+     "file": "/home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/spmv_result_drain.xo",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/spmv_result_drain/spmv_result_drain/cpu_sources/spmv_result_drain.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [
+     "RD"
+    ],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   },
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "k2k_relay",
+     "file": "/home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/k2k_relay.xo",
+     "reports": [],
+     "uuid": ""
+    },
+    "sources": [
+     "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/k2k_relay/k2k_relay/cpu_sources/k2k_relay.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [
+     "relay_SK2_vin",
+     "relay_SK2_rout"
+    ],
+    "type": "HLS",
+    "frequency": 0,
+    "freqUnits": ""
+   }
+  ],
+  "toolVersion": "Vitis V++ Compiler Release 2021.2. SW Build 3363252 on 2021-10-14-04:41:01"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Mar 21 01:08:09 2023",
+ "timestampMillis": "1679375289062",
+ "buildStep": {
+  "cmdId": "e453228b-0042-4dee-b18b-1be72153782a",
+  "name": "system_link",
+  "logFile": "",
+  "commandLine": "system_link --xo /home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/spmv_sk0.xo --xo /home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/spmv_sk1.xo --xo /home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/spmv_sk2.xo --xo /home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/spmv_vector_loader.xo --xo /home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/spmv_result_drain.xo --xo /home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/k2k_relay.xo -keep --config /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target hw --output_dir /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int --temp_dir /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/sys_link",
+  "args": [
+   "--xo",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/spmv_sk0.xo",
+   "--xo",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/spmv_sk1.xo",
+   "--xo",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/spmv_sk2.xo",
+   "--xo",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/spmv_vector_loader.xo",
+   "--xo",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/spmv_result_drain.xo",
+   "--xo",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/_x.hw/k2k_relay.xo",
+   "-keep",
+   "--config",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/syslinkConfig.ini",
+   "--xpfm",
+   "/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm",
+   "--target",
+   "hw",
+   "--output_dir",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int",
+   "--temp_dir",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/sys_link"
+  ],
+  "iniFiles": [
+   {
+    "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/syslinkConfig.ini",
+    "content": "nk=spmv_sk0:1:SK0\nnk=spmv_sk1:1:SK1\nnk=spmv_sk2:1:SK2\nnk=spmv_vector_loader:1:VL\nnk=spmv_result_drain:1:RD\nnk=k2k_relay:2:relay_SK2_vin.relay_SK2_rout\nsc=VL.to_SLR0:SK0.vec_in:32\nsc=VL.to_SLR1:SK1.vec_in:32\nsc=VL.to_SLR2:relay_SK2_vin.in:32\nsc=relay_SK2_vin.out:SK2.vec_in:32\nsc=SK0.res_out:RD.from_SLR0:32\nsc=SK1.res_out:RD.from_SLR1:32\nsc=SK2.res_out:relay_SK2_rout.in:32\nsc=relay_SK2_rout.out:RD.from_SLR2:32\nsp=SK0.matrix_hbm_0:HBM[0]\nsp=SK0.matrix_hbm_1:HBM[1]\nsp=SK0.matrix_hbm_2:HBM[2]\nsp=SK0.matrix_hbm_3:HBM[3]\nsp=SK1.matrix_hbm_4:HBM[4]\nsp=SK1.matrix_hbm_5:HBM[5]\nsp=SK1.matrix_hbm_6:HBM[6]\nsp=SK1.matrix_hbm_7:HBM[7]\nsp=SK1.matrix_hbm_8:HBM[8]\nsp=SK1.matrix_hbm_9:HBM[9]\nsp=SK2.matrix_hbm_10:HBM[10]\nsp=SK2.matrix_hbm_11:HBM[11]\nsp=SK2.matrix_hbm_12:HBM[12]\nsp=SK2.matrix_hbm_13:HBM[13]\nsp=SK2.matrix_hbm_14:HBM[14]\nsp=SK2.matrix_hbm_15:HBM[15]\nsp=VL.packed_dense_vector:HBM[20:21]\nsp=RD.packed_dense_result:HBM[20:21]\nslr=SK0:SLR0\nslr=SK1:SLR1\nslr=SK2:SLR2\nslr=VL:SLR0\nslr=RD:SLR0\nslr=relay_SK2_vin:SLR1\nslr=relay_SK2_rout:SLR1\n\n"
+   }
+  ],
+  "cwd": "/home/gdubey/Documents/HiSparse/spmv-fp"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 01:08:09 2023",
+ "timestampMillis": "1679375289062",
+ "status": {
+  "cmdId": "e453228b-0042-4dee-b18b-1be72153782a",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 01:08:30 2023",
+ "timestampMillis": "1679375310547",
+ "status": {
+  "cmdId": "e453228b-0042-4dee-b18b-1be72153782a",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Mar 21 01:08:30 2023",
+ "timestampMillis": "1679375310549",
+ "buildStep": {
+  "cmdId": "94a97f32-ac9c-437d-83c2-9082d7b4b6d1",
+  "name": "cf2sw",
+  "logFile": "",
+  "commandLine": "cf2sw -sdsl /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/sdsl.dat -rtd /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/cf2sw.rtd -nofilter /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/cf2sw_full.rtd -xclbin /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xclbin_orig.xml -o /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xclbin_orig.1.xml",
+  "args": [
+   "-sdsl",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/sdsl.dat",
+   "-rtd",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/cf2sw.rtd",
+   "-nofilter",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/cf2sw_full.rtd",
+   "-xclbin",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xclbin_orig.xml",
+   "-o",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xclbin_orig.1.xml"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/gdubey/Documents/HiSparse/spmv-fp"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 01:08:30 2023",
+ "timestampMillis": "1679375310549",
+ "status": {
+  "cmdId": "94a97f32-ac9c-437d-83c2-9082d7b4b6d1",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 01:08:39 2023",
+ "timestampMillis": "1679375319044",
+ "status": {
+  "cmdId": "94a97f32-ac9c-437d-83c2-9082d7b4b6d1",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Mar 21 01:08:39 2023",
+ "timestampMillis": "1679375319045",
+ "buildStep": {
+  "cmdId": "d414680d-ebf6-4eb0-9615-3720d3b34f60",
+  "name": "rtd2_system_diagram",
+  "logFile": "",
+  "commandLine": "rtd2SystemDiagram",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/gdubey/Documents/HiSparse/spmv-fp"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 01:08:39 2023",
+ "timestampMillis": "1679375319045",
+ "status": {
+  "cmdId": "d414680d-ebf6-4eb0-9615-3720d3b34f60",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 01:08:40 2023",
+ "timestampMillis": "1679375320039",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/systemDiagramModel.json",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "SYSTEM_DIAGRAM",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 01:08:40 2023",
+ "timestampMillis": "1679375320039",
+ "status": {
+  "cmdId": "d414680d-ebf6-4eb0-9615-3720d3b34f60",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Mar 21 01:08:40 2023",
+ "timestampMillis": "1679375320041",
+ "buildStep": {
+  "cmdId": "b1b76cec-ff39-42af-b2ed-4b1ce42e612c",
+  "name": "vpl",
+  "logFile": "",
+  "commandLine": "vpl -t hw -f /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --remote_ip_cache /home/gdubey/Documents/HiSparse/spmv-fp/.ipcache -s --output_dir /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int --log_dir /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/logs/link --report_dir /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link --config /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/vplConfig.ini -k /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link --no-info --iprepo /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_k2k_relay_1_0 --iprepo /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_spmv_result_drain_1_0 --iprepo /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_spmv_sk0_1_0 --iprepo /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_spmv_sk2_1_0 --iprepo /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_spmv_sk1_1_0 --iprepo /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_spmv_vector_loader_1_0 --messageDb /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/run_link/vpl.pb /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/dr.bd.tcl",
+  "args": [
+   "-t",
+   "hw",
+   "-f",
+   "/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm",
+   "--remote_ip_cache",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/.ipcache",
+   "-s",
+   "--output_dir",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int",
+   "--log_dir",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/logs/link",
+   "--report_dir",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link",
+   "--config",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/vplConfig.ini",
+   "-k",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/kernel_info.dat",
+   "--webtalk_flag",
+   "Vitis",
+   "--temp_dir",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link",
+   "--no-info",
+   "--iprepo",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_k2k_relay_1_0",
+   "--iprepo",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_spmv_result_drain_1_0",
+   "--iprepo",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_spmv_sk0_1_0",
+   "--iprepo",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_spmv_sk2_1_0",
+   "--iprepo",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_spmv_sk1_1_0",
+   "--iprepo",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_spmv_vector_loader_1_0",
+   "--messageDb",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/run_link/vpl.pb",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/dr.bd.tcl"
+  ],
+  "iniFiles": [
+   {
+    "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/vplConfig.ini",
+    "content": "[advanced]\nmisc=report=type report_timing_summary name impl_report_timing_summary_route_design_summary steps {route_design} runs {impl_1} options {-max_paths 10}\nmisc=report=type report_timing_summary name impl_report_timing_summary_post_route_phys_opt_design_summary steps {post_route_phys_opt_design} runs {impl_1} options {-max_paths 10}\nparam=compiler.enablePerformanceTrace=1\nparam=compiler.vppCurrentWorkingDir=/home/gdubey/Documents/HiSparse/spmv-fp\nmisc=BinaryName=spmv\n\n[connectivity]\nnk=spmv_sk0:1:SK0\nnk=spmv_sk1:1:SK1\nnk=spmv_sk2:1:SK2\nnk=spmv_vector_loader:1:VL\nnk=spmv_result_drain:1:RD\nnk=k2k_relay:2:relay_SK2_vin.relay_SK2_rout\n\n[vivado]\nprop=run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS}={-directive sdx_optimization_effort_high}\nprop=run.impl_1.{STEPS.PLACE_DESIGN.ARGS.MORE OPTIONS}={-retiming}\nprop=run.impl_1.STEPS.PHYS_OPT_DESIGN.IS_ENABLED=true\nprop=run.impl_1.STEPS.POST_ROUTE_PHYS_OPT_DESIGN.IS_ENABLED=true\n\n"
+   }
+  ],
+  "cwd": "/home/gdubey/Documents/HiSparse/spmv-fp"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 01:08:40 2023",
+ "timestampMillis": "1679375320041",
+ "status": {
+  "cmdId": "b1b76cec-ff39-42af-b2ed-4b1ce42e612c",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Tue Mar 21 01:08:41 2023",
+ "timestampMillis": "1679375321367",
+ "buildStep": {
+  "cmdId": "561855f7-c7b1-45b9-98ee-51e9be07117e",
+  "name": "vpl",
+  "logFile": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/link.steps.log",
+  "commandLine": "/tools/Xilinx/Vitis/2021.2/bin/unwrapped/lnx64.o/vpl -t hw -f /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --remote_ip_cache /home/gdubey/Documents/HiSparse/spmv-fp/.ipcache -s --output_dir /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int --log_dir /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/logs/link --report_dir /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link --config /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/vplConfig.ini -k /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link --no-info --iprepo /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_k2k_relay_1_0 --iprepo /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_spmv_result_drain_1_0 --iprepo /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_spmv_sk0_1_0 --iprepo /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_spmv_sk2_1_0 --iprepo /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_spmv_sk1_1_0 --iprepo /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xo/ip_repo/xilinx_com_hls_spmv_vector_loader_1_0 --messageDb /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/run_link/vpl.pb /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/dr.bd.tcl ",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/run_link"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 01:08:41 2023",
+ "timestampMillis": "1679375321367",
+ "status": {
+  "cmdId": "561855f7-c7b1-45b9-98ee-51e9be07117e",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_VivadoProject",
+ "dateTimestamp": "Tue Mar 21 01:08:51 2023",
+ "timestampMillis": "1679375331196",
+ "vivadoProject": {
+  "openDir": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/vivado/vpl",
+  "openScript": "openprj.tcl",
+  "relativeProject": "prj/prj.xpr"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Mar 21 01:08:51 2023",
+ "timestampMillis": "1679375331197",
+ "buildStep": {
+  "cmdId": "0b0eb746-67fc-4812-ab2d-9c8a451b43b5",
+  "name": "vivado",
+  "logFile": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/vivado/vpl/vivado.log",
+  "commandLine": "vivado -log vivado.log -applog -m64 -messageDb vivado.pb -mode batch -source vpl.tcl -notrace",
+  "args": [
+   "-log",
+   "vivado.log",
+   "-applog",
+   " -m64",
+   "-messageDb",
+   "vivado.pb",
+   "-mode",
+   "batch",
+   "-source",
+   "vpl.tcl",
+   "-notrace"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/run_link"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 01:08:51 2023",
+ "timestampMillis": "1679375331197",
+ "status": {
+  "cmdId": "0b0eb746-67fc-4812-ab2d-9c8a451b43b5",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 01:09:43 2023",
+ "timestampMillis": "1679375383826",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/debug_ip_layout.rtd",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "DEBUG_IP_LAYOUT",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Tue Mar 21 01:15:39 2023",
+ "timestampMillis": "1679375739180",
+ "buildStep": {
+  "cmdId": "9625e5a1-87e4-49bf-b77d-039877c4515f",
+  "name": "vivado.impl",
+  "logFile": "",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/vivado/vpl"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 01:15:39 2023",
+ "timestampMillis": "1679375739181",
+ "status": {
+  "cmdId": "9625e5a1-87e4-49bf-b77d-039877c4515f",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Tue Mar 21 01:15:39 2023",
+ "timestampMillis": "1679375739181",
+ "buildStep": {
+  "cmdId": "63c00420-8ba6-4136-8664-25a87a344503",
+  "name": "vivado.impl.impl_1",
+  "logFile": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/vivado/vpl/prj/prj.runs/impl_1/runme.log",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/vivado/vpl/prj/prj.runs/impl_1"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 01:15:39 2023",
+ "timestampMillis": "1679375739181",
+ "status": {
+  "cmdId": "63c00420-8ba6-4136-8664-25a87a344503",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 06:59:02 2023",
+ "timestampMillis": "1679396342961",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/vivado/vpl/prj/prj.runs/impl_1/system_diagram.json",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "SYSTEM_DIAGRAM_PLUS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 07:05:12 2023",
+ "timestampMillis": "1679396712260",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/kernel_service.json",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "KERNEL_SERVICE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 07:05:12 2023",
+ "timestampMillis": "1679396712262",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/kernel_service.pb",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "KERNEL_SERVICE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406792",
+ "status": {
+  "cmdId": "0b0eb746-67fc-4812-ab2d-9c8a451b43b5",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406819",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_kernel_util_placed.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "KERNEL_UTILIZATION_PLACEMENT",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406819",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_slr_util_placed.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_SLR_UTIL_PLACED",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406819",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_slr_util_routed.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_SLR_UTIL_ROUTED",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406820",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_slr_util_routed.pb",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_SLR_UTIL_ROUTED",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406820",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_kernel_util_synthed.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "KERNEL_UTILIZATION_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406820",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_kernel_util_routed.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "KERNEL_UTILIZATION_ROUTE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406821",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_slr_util_placed.pb",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_SLR_UTIL_PLACED",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406821",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_full_util_synthed.pb",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_UTILIZATION_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406821",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_full_util_synthed.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_UTILIZATION_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406821",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_kernel_util_synthed.xutil",
+  "name": "",
+  "fileType": "XUTIL",
+  "reportType": "KERNEL_UTILIZATION_SYNTHESIS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406822",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_kernel_util_routed.xutil",
+  "name": "",
+  "fileType": "XUTIL",
+  "reportType": "KERNEL_UTILIZATION_ROUTE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406822",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_full_util_routed.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_UTILIZATION_ROUTE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406822",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_kernel_util_placed.xutil",
+  "name": "",
+  "fileType": "XUTIL",
+  "reportType": "KERNEL_UTILIZATION_PLACEMENT",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406822",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_full_util_routed.pb",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_UTILIZATION_ROUTE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406848",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/syn/pfm_dynamic_hmss_0_0_synth_1_pfm_dynamic_hmss_0_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406848",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/syn/bd_5dca_interconnect18_21_0_synth_1_bd_5dca_interconnect18_21_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406848",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/syn/bd_5dca_interconnect17_20_0_synth_1_bd_5dca_interconnect17_20_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406849",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_system_diagram.json",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "SYSTEM_DIAGRAM_PLUS",
+  "cmdId": "63c00420-8ba6-4136-8664-25a87a344503"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406855",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_xilinx_u280_xdma_201920_3_bb_locked_timing_summary_routed.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_TIMING_SUMMARY",
+  "cmdId": "63c00420-8ba6-4136-8664-25a87a344503"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406862",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_xilinx_u280_xdma_201920_3_bb_locked_timing_summary_routed.rpx",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_REPORT_TIMING_SUMMARY",
+  "cmdId": "63c00420-8ba6-4136-8664-25a87a344503"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406863",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_xilinx_u280_xdma_201920_3_bb_locked_timing_summary_routed.rpv",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_REPORT_TIMING_SUMMARY_CONCISE",
+  "cmdId": "63c00420-8ba6-4136-8664-25a87a344503"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406869",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_xilinx_u280_xdma_201920_3_bb_locked_timing_summary_postroute_physopted.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_TIMING_SUMMARY",
+  "cmdId": "63c00420-8ba6-4136-8664-25a87a344503"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406876",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_xilinx_u280_xdma_201920_3_bb_locked_timing_summary_postroute_physopted.rpx",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_REPORT_TIMING_SUMMARY",
+  "cmdId": "63c00420-8ba6-4136-8664-25a87a344503"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406877",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/imp/impl_1_xilinx_u280_xdma_201920_3_bb_locked_timing_summary_postroute_physopted.rpv",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_REPORT_TIMING_SUMMARY_CONCISE",
+  "cmdId": "63c00420-8ba6-4136-8664-25a87a344503"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406889",
+ "status": {
+  "cmdId": "561855f7-c7b1-45b9-98ee-51e9be07117e",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406901",
+ "status": {
+  "cmdId": "b1b76cec-ff39-42af-b2ed-4b1ce42e612c",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406903",
+ "buildStep": {
+  "cmdId": "76a110da-3d79-4dbd-b061-d1c5b064da73",
+  "name": "rtdgen",
+  "logFile": "",
+  "commandLine": "rtdgen",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/gdubey/Documents/HiSparse/spmv-fp"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406903",
+ "status": {
+  "cmdId": "76a110da-3d79-4dbd-b061-d1c5b064da73",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406975",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/spmv_xml.rtd",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "XCLBIN_INFO",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406977",
+ "buildStep": {
+  "cmdId": "2164114e-8395-468e-83e7-e9fbcd0441d9",
+  "name": "cf2sw",
+  "logFile": "",
+  "commandLine": "cf2sw -a /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/address_map.xml -sdsl /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/sdsl.dat -xclbin /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xclbin_orig.xml -rtd /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/spmv.rtd -o /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/spmv.xml",
+  "args": [
+   "-a",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/address_map.xml",
+   "-sdsl",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/sdsl.dat",
+   "-xclbin",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/xclbin_orig.xml",
+   "-rtd",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/spmv.rtd",
+   "-o",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/spmv.xml"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/gdubey/Documents/HiSparse/spmv-fp"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 10:03:26 2023",
+ "timestampMillis": "1679407406978",
+ "status": {
+  "cmdId": "2164114e-8395-468e-83e7-e9fbcd0441d9",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 10:03:34 2023",
+ "timestampMillis": "1679407414751",
+ "status": {
+  "cmdId": "2164114e-8395-468e-83e7-e9fbcd0441d9",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Mar 21 10:03:34 2023",
+ "timestampMillis": "1679407414752",
+ "buildStep": {
+  "cmdId": "cd4e4f53-5df7-4631-aed2-0b9c8de4910f",
+  "name": "rtdgen",
+  "logFile": "",
+  "commandLine": "writeSystemDiagram",
+  "args": [
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/spmv.rtd",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/systemDiagramModelSlrBaseAddress.json"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/gdubey/Documents/HiSparse/spmv-fp"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 10:03:34 2023",
+ "timestampMillis": "1679407414752",
+ "status": {
+  "cmdId": "cd4e4f53-5df7-4631-aed2-0b9c8de4910f",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:34 2023",
+ "timestampMillis": "1679407414757",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/systemDiagramModelSlrBaseAddress.json",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "SYSTEM_DIAGRAM_PLUS",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 10:03:34 2023",
+ "timestampMillis": "1679407414757",
+ "status": {
+  "cmdId": "cd4e4f53-5df7-4631-aed2-0b9c8de4910f",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 10:03:34 2023",
+ "timestampMillis": "1679407414757",
+ "status": {
+  "cmdId": "76a110da-3d79-4dbd-b061-d1c5b064da73",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Mar 21 10:03:34 2023",
+ "timestampMillis": "1679407414759",
+ "buildStep": {
+  "cmdId": "6d93b92a-0621-4637-8061-627a3d2fdecb",
+  "name": "xclbinutil",
+  "logFile": "",
+  "commandLine": "xclbinutil --add-section DEBUG_IP_LAYOUT:JSON:/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/debug_ip_layout.rtd --add-section BITSTREAM:RAW:/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/partial.bit --force --target hw --key-value SYS:dfx_enable:true --add-section :JSON:/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/spmv.rtd --append-section :JSON:/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/appendSection.rtd --add-section CLOCK_FREQ_TOPOLOGY:JSON:/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/spmv_xml.rtd --add-section BUILD_METADATA:JSON:/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/spmv_build.rtd --add-section EMBEDDED_METADATA:RAW:/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/spmv.xml --add-section SYSTEM_METADATA:RAW:/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/systemDiagramModelSlrBaseAddress.json --output /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/spmv.xclbin",
+  "args": [
+   "--add-section",
+   "DEBUG_IP_LAYOUT:JSON:/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/debug_ip_layout.rtd",
+   "--add-section",
+   "BITSTREAM:RAW:/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/partial.bit",
+   "--force",
+   "--target",
+   "hw",
+   "--key-value",
+   "SYS:dfx_enable:true",
+   "--add-section",
+   ":JSON:/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/spmv.rtd",
+   "--append-section",
+   ":JSON:/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/appendSection.rtd",
+   "--add-section",
+   "CLOCK_FREQ_TOPOLOGY:JSON:/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/spmv_xml.rtd",
+   "--add-section",
+   "BUILD_METADATA:JSON:/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/spmv_build.rtd",
+   "--add-section",
+   "EMBEDDED_METADATA:RAW:/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/spmv.xml",
+   "--add-section",
+   "SYSTEM_METADATA:RAW:/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/int/systemDiagramModelSlrBaseAddress.json",
+   "--output",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/spmv.xclbin"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/gdubey/Documents/HiSparse/spmv-fp"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 10:03:34 2023",
+ "timestampMillis": "1679407414759",
+ "status": {
+  "cmdId": "6d93b92a-0621-4637-8061-627a3d2fdecb",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 10:03:34 2023",
+ "timestampMillis": "1679407414930",
+ "status": {
+  "cmdId": "6d93b92a-0621-4637-8061-627a3d2fdecb",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Mar 21 10:03:34 2023",
+ "timestampMillis": "1679407414932",
+ "buildStep": {
+  "cmdId": "f08b6bad-a6ac-43ea-bc13-59890c158d2c",
+  "name": "xclbinutilinfo",
+  "logFile": "",
+  "commandLine": "xclbinutil --quiet --force --info /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/spmv.xclbin.info --input /home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/spmv.xclbin",
+  "args": [
+   "--quiet",
+   "--force",
+   "--info",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/spmv.xclbin.info",
+   "--input",
+   "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/spmv.xclbin"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/gdubey/Documents/HiSparse/spmv-fp"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 10:03:34 2023",
+ "timestampMillis": "1679407414932",
+ "status": {
+  "cmdId": "f08b6bad-a6ac-43ea-bc13-59890c158d2c",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 10:03:35 2023",
+ "timestampMillis": "1679407415528",
+ "status": {
+  "cmdId": "f08b6bad-a6ac-43ea-bc13-59890c158d2c",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Mar 21 10:03:35 2023",
+ "timestampMillis": "1679407415529",
+ "buildStep": {
+  "cmdId": "990d19d4-f519-4194-8158-63c223e874cd",
+  "name": "generate_sc_driver",
+  "logFile": "",
+  "commandLine": "",
+  "args": [],
+  "iniFiles": [],
+  "cwd": "/home/gdubey/Documents/HiSparse/spmv-fp"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 10:03:35 2023",
+ "timestampMillis": "1679407415529",
+ "status": {
+  "cmdId": "990d19d4-f519-4194-8158-63c223e874cd",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 10:03:35 2023",
+ "timestampMillis": "1679407415529",
+ "status": {
+  "cmdId": "990d19d4-f519-4194-8158-63c223e874cd",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:35 2023",
+ "timestampMillis": "1679407415927",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/system_estimate_spmv.xtxt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_SYSTEM_ESTIMATE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:36 2023",
+ "timestampMillis": "1679407416076",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/v++_link_spmv_guidance.html",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:36 2023",
+ "timestampMillis": "1679407416077",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/v++_link_spmv_guidance.pb",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Mar 21 10:03:36 2023",
+ "timestampMillis": "1679407416078",
+ "report": {
+  "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/logs/optraceViewer.html",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "OPERATION_TRACE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Mar 21 10:03:36 2023",
+ "timestampMillis": "1679407416078",
+ "status": {
+  "cmdId": "3463f5ca-98ba-4e14-99d8-f435d030faf6",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>

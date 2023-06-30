@@ -1,0 +1,2156 @@
+{
+ "session": {
+  "name": "v++_link_spmv",
+  "uuid": "9f55cfec-3929-4016-90de-e5c9f5d109cc",
+  "description": "v++  -t hw --platform /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --save-temps -I./libfpga -DFP_STALL --temp_dir ./build_dir.hw -l --optimize 3 --config spmv.ini -obuild_dir.hw/spmv.xclbin _x.hw/spmv_sk0.xo _x.hw/spmv_sk1.xo _x.hw/spmv_sk2.xo _x.hw/spmv_vector_loader.xo _x.hw/spmv_result_drain.xo _x.hw/k2k_relay.xo ",
+  "timestamp": "0",
+  "report_file": {
+   "scheme": "FILE",
+   "host": "",
+   "port": 0,
+   "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/reports/link/v++_link_spmv_guidance.html",
+   "query": "",
+   "fragment": "",
+   "media_type": "",
+   "encoding": "",
+   "data": ""
+  },
+  "proto_file": {
+   "scheme": "FILE",
+   "host": "",
+   "port": 0,
+   "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/v++_link_spmv_guidance.pb",
+   "query": "",
+   "fragment": "",
+   "media_type": "",
+   "encoding": "",
+   "data": ""
+  },
+  "build_target": "",
+  "config_files": [
+   {
+    "fileName": "spmv.ini",
+    "contents": "[connectivity]\nnk=spmv_sk0:1:SK0\nnk=spmv_sk1:1:SK1\nnk=spmv_sk2:1:SK2\nnk=spmv_vector_loader:1:VL\nnk=spmv_result_drain:1:RD\nnk=k2k_relay:2:relay_SK2_vin.relay_SK2_rout\nslr=SK0:SLR0\nslr=SK1:SLR1\nslr=SK2:SLR2\nslr=VL:SLR0\nslr=RD:SLR0\nslr=relay_SK2_vin:SLR1\nslr=relay_SK2_rout:SLR1\nsp=SK0.matrix_hbm_0:HBM[0]\nsp=SK0.matrix_hbm_1:HBM[1]\nsp=SK0.matrix_hbm_2:HBM[2]\nsp=SK0.matrix_hbm_3:HBM[3]\nsp=SK1.matrix_hbm_4:HBM[4]\nsp=SK1.matrix_hbm_5:HBM[5]\nsp=SK1.matrix_hbm_6:HBM[6]\nsp=SK1.matrix_hbm_7:HBM[7]\nsp=SK1.matrix_hbm_8:HBM[8]\nsp=SK1.matrix_hbm_9:HBM[9]\nsp=SK2.matrix_hbm_10:HBM[10]\nsp=SK2.matrix_hbm_11:HBM[11]\nsp=SK2.matrix_hbm_12:HBM[12]\nsp=SK2.matrix_hbm_13:HBM[13]\nsp=SK2.matrix_hbm_14:HBM[14]\nsp=SK2.matrix_hbm_15:HBM[15]\nsp=VL.packed_dense_vector:HBM[20:21]\nsp=RD.packed_dense_result:HBM[20:21]\nsc=VL.to_SLR0:SK0.vec_in:32\nsc=VL.to_SLR1:SK1.vec_in:32\nsc=VL.to_SLR2:relay_SK2_vin.in:32\nsc=relay_SK2_vin.out:SK2.vec_in:32\nsc=SK0.res_out:RD.from_SLR0:32\nsc=SK1.res_out:RD.from_SLR1:32\nsc=SK2.res_out:relay_SK2_rout.in:32\nsc=relay_SK2_rout.out:RD.from_SLR2:32\n"
+   }
+  ]
+ },
+ "violation_count": 15,
+ "waived_count": 0,
+ "affirmation_count": 8,
+ "violations": {
+  "hashmap": {
+   "16": {
+    "id": 16,
+    "severity": "SEV_WARNING",
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR2 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "SK2",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR2"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "SK2/m_axi_spmv_mat13",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0]).",
+     "args": {
+      "arg": [
+       {
+        "uri": {
+         "link_text": "This page",
+         "url": {
+          "scheme": "HTTPS",
+          "host": "www.xilinx.com",
+          "port": 0,
+          "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+          "query": "",
+          "fragment": "",
+          "media_type": "",
+          "encoding": "",
+          "data": ""
+         },
+         "docgen_filename": ""
+        },
+        "string_val": ""
+       }
+      ]
+     }
+    },
+    "categories": {
+     "1": "System",
+     "2": "Performance",
+     "0": "Accelerator"
+    },
+    "extended_categories": {},
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "17": {
+    "id": 17,
+    "severity": "SEV_WARNING",
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR2 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "SK2",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR2"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "SK2/m_axi_spmv_mat14",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0]).",
+     "args": {
+      "arg": [
+       {
+        "uri": {
+         "link_text": "This page",
+         "url": {
+          "scheme": "HTTPS",
+          "host": "www.xilinx.com",
+          "port": 0,
+          "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+          "query": "",
+          "fragment": "",
+          "media_type": "",
+          "encoding": "",
+          "data": ""
+         },
+         "docgen_filename": ""
+        },
+        "string_val": ""
+       }
+      ]
+     }
+    },
+    "categories": {
+     "0": "Accelerator",
+     "1": "System",
+     "2": "Performance"
+    },
+    "extended_categories": {},
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "18": {
+    "id": 18,
+    "severity": "SEV_WARNING",
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR2 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "SK2",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR2"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "SK2/m_axi_spmv_mat15",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0]).",
+     "args": {
+      "arg": [
+       {
+        "uri": {
+         "link_text": "This page",
+         "url": {
+          "scheme": "HTTPS",
+          "host": "www.xilinx.com",
+          "port": 0,
+          "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+          "query": "",
+          "fragment": "",
+          "media_type": "",
+          "encoding": "",
+          "data": ""
+         },
+         "docgen_filename": ""
+        },
+        "string_val": ""
+       }
+      ]
+     }
+    },
+    "categories": {
+     "0": "Accelerator",
+     "1": "System",
+     "2": "Performance"
+    },
+    "extended_categories": {},
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "20": {
+    "id": 20,
+    "severity": "SEV_WARNING",
+    "rule_key": "AUTO-FREQ-SCALING-04",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=AUTO-FREQ-SCALING-04.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "One or more timing paths failed timing requirements. The kernel clock !%0! has an original frequency equal to 300.000000 MHz. The frequency has been automatically changed to 214.7 MHz to enable proper functionality. The clock Id is 0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "OTHER",
+         "name": "clkwiz_kernel_clk_out1",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "300.000000"
+       },
+       {
+        "string_val": "214.7"
+       },
+       {
+        "string_val": "0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "The automatic frequency scaling feature allows user kernels to operate in hardware, even if at a lower frequency than intended. !URI%1! describes how to examine timing path violations.",
+     "args": {
+      "arg": [
+       {
+        "uri": {
+         "link_text": "This page",
+         "url": {
+          "scheme": "HTTPS",
+          "host": "www.xilinx.com",
+          "port": 0,
+          "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=AUTO-FREQ-SCALING-04.html",
+          "query": "",
+          "fragment": "",
+          "media_type": "",
+          "encoding": "",
+          "data": ""
+         },
+         "docgen_filename": ""
+        },
+        "string_val": ""
+       }
+      ]
+     }
+    },
+    "categories": {
+     "0": "Accelerator",
+     "1": "spmv",
+     "2": "Performance"
+    },
+    "extended_categories": {},
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "21": {
+    "id": 21,
+    "severity": "SEV_ADVISORY",
+    "rule_key": "AUTO-FREQ-SCALING-08",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "setting",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=AUTO-FREQ-SCALING-08.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "For clock !%0!, the auto scaled frequency 650 MHz exceeds the original specified frequency. The compiler will select the original specified frequency of 500.0 MHz.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "FILE",
+         "name": "clk_out1_pfm_top_clkwiz_kernel2_0",
+         "id": 0,
+         "uuid": "",
+         "url": {
+          "scheme": "FILE",
+          "host": "",
+          "port": 0,
+          "path": "/home/gdubey/Documents/HiSparse/spmv-fp/build_dir.hw/link/vivado/vpl/prj/prj.runs/impl_1/dr_timing_summary.rpt",
+          "query": "",
+          "fragment": "",
+          "media_type": "",
+          "encoding": "",
+          "data": ""
+         }
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "650"
+       },
+       {
+        "string_val": "500.0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "The automatic frequency scaling feature allows user kernels to operate in hardware, even if at a lower frequency than intended. In this case the clock may in fact be able to run at a higher frequency than specified. You may want to consider !URI%1! the clock frequency higher for better performance. The '--kernel_frequency' option is one way to control the frequency specification.",
+     "args": {
+      "arg": [
+       {
+        "uri": {
+         "link_text": "setting",
+         "url": {
+          "scheme": "HTTPS",
+          "host": "www.xilinx.com",
+          "port": 0,
+          "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=AUTO-FREQ-SCALING-08.html",
+          "query": "",
+          "fragment": "",
+          "media_type": "",
+          "encoding": "",
+          "data": ""
+         },
+         "docgen_filename": ""
+        },
+        "string_val": ""
+       }
+      ]
+     }
+    },
+    "categories": {
+     "0": "Accelerator",
+     "1": "spmv",
+     "2": "Performance"
+    },
+    "extended_categories": {},
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "22": {
+    "id": 22,
+    "severity": "SEV_WARNING",
+    "rule_key": "AUTO-FREQ-SCALING-07",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=AUTO-FREQ-SCALING-07.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "One or more timing paths failed timing requirements. The system clock !%0! has an original frequency equal to 450 MHz. The frequency has been automatically changed to 385.6 MHz to enable proper functionality.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "OTHER",
+         "name": "clk_out1_pfm_top_clkwiz_hbm_aclk_0",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "450"
+       },
+       {
+        "string_val": "385.6"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "The automatic frequency scaling feature allows user kernels to operate in hardware, even if at a lower frequency than intended. !URI%1! describes how to resolve issues identified as system timing violations.",
+     "args": {
+      "arg": [
+       {
+        "uri": {
+         "link_text": "This page",
+         "url": {
+          "scheme": "HTTPS",
+          "host": "www.xilinx.com",
+          "port": 0,
+          "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=AUTO-FREQ-SCALING-07.html",
+          "query": "",
+          "fragment": "",
+          "media_type": "",
+          "encoding": "",
+          "data": ""
+         },
+         "docgen_filename": ""
+        },
+        "string_val": ""
+       }
+      ]
+     }
+    },
+    "categories": {
+     "0": "Accelerator",
+     "1": "System",
+     "2": "Performance"
+    },
+    "extended_categories": {},
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "7": {
+    "id": 7,
+    "severity": "SEV_WARNING",
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR1 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "SK1",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR1"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "SK1/m_axi_spmv_mat4",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0]).",
+     "args": {
+      "arg": [
+       {
+        "uri": {
+         "link_text": "This page",
+         "url": {
+          "scheme": "HTTPS",
+          "host": "www.xilinx.com",
+          "port": 0,
+          "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+          "query": "",
+          "fragment": "",
+          "media_type": "",
+          "encoding": "",
+          "data": ""
+         },
+         "docgen_filename": ""
+        },
+        "string_val": ""
+       }
+      ]
+     }
+    },
+    "categories": {
+     "0": "Accelerator",
+     "1": "System",
+     "2": "Performance"
+    },
+    "extended_categories": {},
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "8": {
+    "id": 8,
+    "severity": "SEV_WARNING",
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR1 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "SK1",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR1"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "SK1/m_axi_spmv_mat5",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0]).",
+     "args": {
+      "arg": [
+       {
+        "uri": {
+         "link_text": "This page",
+         "url": {
+          "scheme": "HTTPS",
+          "host": "www.xilinx.com",
+          "port": 0,
+          "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+          "query": "",
+          "fragment": "",
+          "media_type": "",
+          "encoding": "",
+          "data": ""
+         },
+         "docgen_filename": ""
+        },
+        "string_val": ""
+       }
+      ]
+     }
+    },
+    "categories": {
+     "0": "Accelerator",
+     "1": "System",
+     "2": "Performance"
+    },
+    "extended_categories": {},
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "9": {
+    "id": 9,
+    "severity": "SEV_WARNING",
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR1 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "SK1",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR1"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "SK1/m_axi_spmv_mat6",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0]).",
+     "args": {
+      "arg": [
+       {
+        "uri": {
+         "link_text": "This page",
+         "url": {
+          "scheme": "HTTPS",
+          "host": "www.xilinx.com",
+          "port": 0,
+          "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+          "query": "",
+          "fragment": "",
+          "media_type": "",
+          "encoding": "",
+          "data": ""
+         },
+         "docgen_filename": ""
+        },
+        "string_val": ""
+       }
+      ]
+     }
+    },
+    "categories": {
+     "0": "Accelerator",
+     "1": "System",
+     "2": "Performance"
+    },
+    "extended_categories": {},
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "10": {
+    "id": 10,
+    "severity": "SEV_WARNING",
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR1 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "SK1",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR1"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "SK1/m_axi_spmv_mat7",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0]).",
+     "args": {
+      "arg": [
+       {
+        "uri": {
+         "link_text": "This page",
+         "url": {
+          "scheme": "HTTPS",
+          "host": "www.xilinx.com",
+          "port": 0,
+          "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+          "query": "",
+          "fragment": "",
+          "media_type": "",
+          "encoding": "",
+          "data": ""
+         },
+         "docgen_filename": ""
+        },
+        "string_val": ""
+       }
+      ]
+     }
+    },
+    "categories": {
+     "1": "System",
+     "2": "Performance",
+     "0": "Accelerator"
+    },
+    "extended_categories": {},
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "11": {
+    "id": 11,
+    "severity": "SEV_WARNING",
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR1 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "SK1",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR1"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "SK1/m_axi_spmv_mat8",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0]).",
+     "args": {
+      "arg": [
+       {
+        "uri": {
+         "link_text": "This page",
+         "url": {
+          "scheme": "HTTPS",
+          "host": "www.xilinx.com",
+          "port": 0,
+          "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+          "query": "",
+          "fragment": "",
+          "media_type": "",
+          "encoding": "",
+          "data": ""
+         },
+         "docgen_filename": ""
+        },
+        "string_val": ""
+       }
+      ]
+     }
+    },
+    "categories": {
+     "2": "Performance",
+     "0": "Accelerator",
+     "1": "System"
+    },
+    "extended_categories": {},
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "12": {
+    "id": 12,
+    "severity": "SEV_WARNING",
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR1 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "SK1",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR1"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "SK1/m_axi_spmv_mat9",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0]).",
+     "args": {
+      "arg": [
+       {
+        "uri": {
+         "link_text": "This page",
+         "url": {
+          "scheme": "HTTPS",
+          "host": "www.xilinx.com",
+          "port": 0,
+          "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+          "query": "",
+          "fragment": "",
+          "media_type": "",
+          "encoding": "",
+          "data": ""
+         },
+         "docgen_filename": ""
+        },
+        "string_val": ""
+       }
+      ]
+     }
+    },
+    "categories": {
+     "0": "Accelerator",
+     "1": "System",
+     "2": "Performance"
+    },
+    "extended_categories": {},
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "13": {
+    "id": 13,
+    "severity": "SEV_WARNING",
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR2 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "SK2",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR2"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "SK2/m_axi_spmv_mat10",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0]).",
+     "args": {
+      "arg": [
+       {
+        "uri": {
+         "link_text": "This page",
+         "url": {
+          "scheme": "HTTPS",
+          "host": "www.xilinx.com",
+          "port": 0,
+          "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+          "query": "",
+          "fragment": "",
+          "media_type": "",
+          "encoding": "",
+          "data": ""
+         },
+         "docgen_filename": ""
+        },
+        "string_val": ""
+       }
+      ]
+     }
+    },
+    "categories": {
+     "2": "Performance",
+     "0": "Accelerator",
+     "1": "System"
+    },
+    "extended_categories": {},
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "14": {
+    "id": 14,
+    "severity": "SEV_WARNING",
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR2 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "SK2",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR2"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "SK2/m_axi_spmv_mat11",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0]).",
+     "args": {
+      "arg": [
+       {
+        "uri": {
+         "link_text": "This page",
+         "url": {
+          "scheme": "HTTPS",
+          "host": "www.xilinx.com",
+          "port": 0,
+          "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+          "query": "",
+          "fragment": "",
+          "media_type": "",
+          "encoding": "",
+          "data": ""
+         },
+         "docgen_filename": ""
+        },
+        "string_val": ""
+       }
+      ]
+     }
+    },
+    "categories": {
+     "0": "Accelerator",
+     "1": "System",
+     "2": "Performance"
+    },
+    "extended_categories": {},
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "15": {
+    "id": 15,
+    "severity": "SEV_WARNING",
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR2 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "SK2",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR2"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "SK2/m_axi_spmv_mat12",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0]).",
+     "args": {
+      "arg": [
+       {
+        "uri": {
+         "link_text": "This page",
+         "url": {
+          "scheme": "HTTPS",
+          "host": "www.xilinx.com",
+          "port": 0,
+          "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+          "query": "",
+          "fragment": "",
+          "media_type": "",
+          "encoding": "",
+          "data": ""
+         },
+         "docgen_filename": ""
+        },
+        "string_val": ""
+       }
+      ]
+     }
+    },
+    "categories": {
+     "2": "Performance",
+     "0": "Accelerator",
+     "1": "System"
+    },
+    "extended_categories": {},
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   }
+  }
+ },
+ "affirmations": {
+  "hashmap": {
+   "1": {
+    "id": 1,
+    "rule_key": "SYSLINK-1",
+    "examples": {
+     "uri": []
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "Created top level block diagram design dr.bd.tcl",
+     "args": {
+      "arg": [
+       {
+        "string_val": "dr.bd.tcl"
+       }
+      ]
+     }
+    },
+    "categories": {},
+    "extended_categories": {},
+    "group": ""
+   },
+   "2": {
+    "id": 2,
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR0 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "RD",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "RD/m_axi_spmv_vin",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0])."
+    },
+    "categories": {
+     "0": "Accelerator",
+     "1": "System",
+     "2": "Performance"
+    },
+    "extended_categories": {},
+    "group": ""
+   },
+   "19": {
+    "id": 19,
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR0 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "VL",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "VL/m_axi_spmv_vin",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0])."
+    },
+    "categories": {
+     "0": "Accelerator",
+     "1": "System",
+     "2": "Performance"
+    },
+    "extended_categories": {},
+    "group": ""
+   },
+   "3": {
+    "id": 3,
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR0 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "SK0",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "SK0/m_axi_spmv_mat0",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0])."
+    },
+    "categories": {
+     "0": "Accelerator",
+     "1": "System",
+     "2": "Performance"
+    },
+    "extended_categories": {},
+    "group": ""
+   },
+   "4": {
+    "id": 4,
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR0 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "SK0",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "SK0/m_axi_spmv_mat1",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0])."
+    },
+    "categories": {
+     "0": "Accelerator",
+     "1": "System",
+     "2": "Performance"
+    },
+    "extended_categories": {},
+    "group": ""
+   },
+   "5": {
+    "id": 5,
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR0 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "SK0",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "SK0/m_axi_spmv_mat2",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0])."
+    },
+    "categories": {
+     "0": "Accelerator",
+     "1": "System",
+     "2": "Performance"
+    },
+    "extended_categories": {},
+    "group": ""
+   },
+   "6": {
+    "id": 6,
+    "rule_key": "ACCELERATOR-SLR-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "",
+    "details": {
+     "text": "The compute unit !%0! is located in SLR0 while its port !%2! is connected to a memory in SLR0.",
+     "args": {
+      "arg": [
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT",
+         "name": "SK0",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       },
+       {
+        "ref": {
+         "type": "COMPUTE_UNIT_PORT",
+         "name": "SK0/m_axi_spmv_mat3",
+         "id": 0,
+         "uuid": ""
+        },
+        "string_val": ""
+       },
+       {
+        "string_val": "SLR0"
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0])."
+    },
+    "categories": {
+     "1": "System",
+     "2": "Performance",
+     "0": "Accelerator"
+    },
+    "extended_categories": {},
+    "group": ""
+   },
+   "23": {
+    "id": 23,
+    "rule_key": "PLATFORM-CLOCK-DOMAINS-01",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "automatic frequency scaling",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=PLATFORM-CLOCK-DOMAINS-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "build_target": "",
+    "expects": "= or \u003e",
+    "details": {
+     "text": "The compiler selected the following frequencies for the runtime controllable kernel clock(s) and scalable system clock(s): \nKernel: clkwiz_kernel_clk_out1 = 214.7 MHz \nKernel: clkwiz_kernel2_clk_out1 = 500.0 MHz \nSystem: clk_out1_pfm_top_clkwiz_hbm_aclk_0 = 385.6 MHz \nScalable clock clkwiz_kernel_clk_out1 (Id = 0) is used for hls kernels. This design has 7 hls kernel(s).\nScalable clock clkwiz_kernel2_clk_out1 (Id = 1) is used for rtl kernels. This design has 0 rtl kernel(s).",
+     "args": {
+      "arg": [
+       {
+        "string_val": "\nKernel: clkwiz_kernel_clk_out1 = 214.7 MHz \nKernel: clkwiz_kernel2_clk_out1 = 500.0 MHz \nSystem: clk_out1_pfm_top_clkwiz_hbm_aclk_0 = 385.6 MHz \nScalable clock clkwiz_kernel_clk_out1 (Id = 0) is used for hls kernels. This design has 7 hls kernel(s).\nScalable clock clkwiz_kernel2_clk_out1 (Id = 1) is used for rtl kernels. This design has 0 rtl kernel(s)."
+       }
+      ]
+     }
+    },
+    "resolution": {
+     "text": "The !URI%1! feature allows user kernels to operate in hardware, even if at a lower frequency than intended."
+    },
+    "categories": {
+     "1": "System",
+     "2": "Performance",
+     "0": "Accelerator"
+    },
+    "extended_categories": {},
+    "group": ""
+   }
+  }
+ },
+ "specs_violated": {
+  "hashmap": {
+   "AUTO-FREQ-SCALING-04": {
+    "key": "AUTO-FREQ-SCALING-04",
+    "full_name": "Auto frequency scaling - Kernel timing failure",
+    "owner": "sdx",
+    "raw_msg": "One or more timing paths failed timing requirements. The kernel clock %REF has an original frequency equal to %s MHz. The frequency has been automatically changed to %s MHz to enable proper functionality. The clock Id is %s.",
+    "msg_abbrev": "",
+    "msg_id": "0",
+    "categories": {
+     "1": "xclbin",
+     "2": "Performance",
+     "0": "Accelerator"
+    },
+    "resolution_msg": "The automatic frequency scaling feature allows user kernels to operate in hardware, even if at a lower frequency than intended. !URI%1! describes how to examine timing path violations.",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=AUTO-FREQ-SCALING-04.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "severity": "SEV_WARNING",
+    "disposition": "ENABLED",
+    "expects": "",
+    "affirm_msg": "",
+    "dynamic_categories": {
+     "0": false,
+     "1": true,
+     "2": false
+    },
+    "extensible_categories": [],
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "AUTO-FREQ-SCALING-07": {
+    "key": "AUTO-FREQ-SCALING-07",
+    "full_name": "Auto frequency scaling - System timing failure",
+    "owner": "sdx",
+    "raw_msg": "One or more timing paths failed timing requirements. The system clock %REF has an original frequency equal to %s MHz. The frequency has been automatically changed to %s MHz to enable proper functionality.",
+    "msg_abbrev": "",
+    "msg_id": "0",
+    "categories": {
+     "0": "Accelerator",
+     "1": "System",
+     "2": "Performance"
+    },
+    "resolution_msg": "The automatic frequency scaling feature allows user kernels to operate in hardware, even if at a lower frequency than intended. !URI%1! describes how to resolve issues identified as system timing violations.",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=AUTO-FREQ-SCALING-07.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "severity": "SEV_WARNING",
+    "disposition": "ENABLED",
+    "expects": "",
+    "affirm_msg": "",
+    "dynamic_categories": {
+     "0": false,
+     "1": false,
+     "2": false
+    },
+    "extensible_categories": [],
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "AUTO-FREQ-SCALING-08": {
+    "key": "AUTO-FREQ-SCALING-08",
+    "full_name": "Auto frequency scaling - Higher frequency possible",
+    "owner": "sdx",
+    "raw_msg": "For clock %REF, the auto scaled frequency %s MHz exceeds the original specified frequency. The compiler will select the original specified frequency of %s MHz.",
+    "msg_abbrev": "",
+    "msg_id": "0",
+    "categories": {
+     "0": "Accelerator",
+     "1": "xclbin",
+     "2": "Performance"
+    },
+    "resolution_msg": "The automatic frequency scaling feature allows user kernels to operate in hardware, even if at a lower frequency than intended. In this case the clock may in fact be able to run at a higher frequency than specified. You may want to consider !URI%1! the clock frequency higher for better performance. The '--kernel_frequency' option is one way to control the frequency specification.",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "setting",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=AUTO-FREQ-SCALING-08.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "severity": "SEV_ADVISORY",
+    "disposition": "ENABLED",
+    "expects": "",
+    "affirm_msg": "",
+    "dynamic_categories": {
+     "1": true,
+     "2": false,
+     "0": false
+    },
+    "extensible_categories": [],
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "ACCELERATOR-SLR-01": {
+    "key": "ACCELERATOR-SLR-01",
+    "full_name": "SLR assignments and memory connectivity",
+    "owner": "vitis",
+    "raw_msg": "The compute unit %REF is located in %s while its port %REF is connected to a memory in %s.",
+    "msg_abbrev": "",
+    "msg_id": "0",
+    "categories": {
+     "0": "Accelerator",
+     "1": "System",
+     "2": "Performance"
+    },
+    "resolution_msg": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0]).",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "severity": "SEV_WARNING",
+    "disposition": "ENABLED",
+    "expects": "",
+    "affirm_msg": "",
+    "dynamic_categories": {
+     "0": false,
+     "1": false,
+     "2": false
+    },
+    "extensible_categories": [],
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   }
+  }
+ },
+ "specs_affirmed": {
+  "hashmap": {
+   "SYSLINK-1": {
+    "key": "SYSLINK-1",
+    "full_name": "system_link Top Level BD Creation",
+    "owner": "system_link",
+    "raw_msg": "Created top level block diagram design %STR",
+    "msg_abbrev": "",
+    "msg_id": "0",
+    "categories": {},
+    "resolution_msg": "",
+    "severity": "SEV_FATAL",
+    "disposition": "ENABLED",
+    "expects": "",
+    "affirm_msg": "",
+    "dynamic_categories": {},
+    "extensible_categories": [],
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "PLATFORM-CLOCK-DOMAINS-01": {
+    "key": "PLATFORM-CLOCK-DOMAINS-01",
+    "full_name": "Runtime controllable clock domains - Achieved clock frequency (MHz)",
+    "owner": "sdx",
+    "raw_msg": "One or more clocks failed a timing check.",
+    "msg_abbrev": "",
+    "msg_id": "0",
+    "categories": {
+     "0": "Accelerator",
+     "1": "System",
+     "2": "Performance"
+    },
+    "resolution_msg": "The !URI%1! feature allows user kernels to operate in hardware, even if at a lower frequency than intended.",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "automatic frequency scaling",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=PLATFORM-CLOCK-DOMAINS-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "severity": "SEV_WARNING",
+    "disposition": "ENABLED",
+    "expects": "= or \u003e",
+    "affirm_msg": "The compiler selected the following frequencies for the runtime controllable kernel clock(s) and scalable system clock(s): %s",
+    "description": {
+     "scheme": "DATA",
+     "host": "",
+     "port": 0,
+     "path": "",
+     "query": "",
+     "fragment": "",
+     "media_type": "text/html",
+     "encoding": "charset=UTF-8",
+     "data": "\u003chtml\u003e Kernel clocks (and system clocks for some platforms) are scalable; they can preserve functionality at the cost of performance by running at a lower frequency than requested. To be scalable, a clock must be driven by an MMCM where the control registers for the MMCM can be set by the runtime over AXI4-Lite. This item shows the final runtime controlled frequencies for the scalable clocks.\u003c/html\u003e"
+    },
+    "dynamic_categories": {
+     "2": false,
+     "0": false,
+     "1": false
+    },
+    "extensible_categories": [],
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   },
+   "ACCELERATOR-SLR-01": {
+    "key": "ACCELERATOR-SLR-01",
+    "full_name": "SLR assignments and memory connectivity",
+    "owner": "vitis",
+    "raw_msg": "The compute unit %REF is located in %s while its port %REF is connected to a memory in %s.",
+    "msg_abbrev": "",
+    "msg_id": "0",
+    "categories": {
+     "0": "Accelerator",
+     "1": "System",
+     "2": "Performance"
+    },
+    "resolution_msg": "Consider using a memory located in the same SLR, especially if not adjacent. In the [connectivity] section of your config file, use the 'slr' and 'sp' keywords (e.g., slr=vadd1:SLR0, sp=vadd1.a:DDR[0]).",
+    "examples": {
+     "uri": [
+      {
+       "link_text": "This page",
+       "url": {
+        "scheme": "HTTPS",
+        "host": "www.xilinx.com",
+        "port": 0,
+        "path": "/cgi-bin/docs/rdoc?t=vitis+guidance;v=2021.2;d=ACCELERATOR-SLR-01.html",
+        "query": "",
+        "fragment": "",
+        "media_type": "",
+        "encoding": "",
+        "data": ""
+       },
+       "docgen_filename": ""
+      }
+     ]
+    },
+    "severity": "SEV_WARNING",
+    "disposition": "ENABLED",
+    "expects": "",
+    "affirm_msg": "",
+    "dynamic_categories": {
+     "0": false,
+     "1": false,
+     "2": false
+    },
+    "extensible_categories": [],
+    "impact": "IMPACT_UNKNOWN",
+    "group": ""
+   }
+  }
+ }
+}
+

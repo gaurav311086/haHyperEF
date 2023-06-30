@@ -1,0 +1,9 @@
+export CNPY_INCLUDE=/home/gdubey/Documents/cnpy/
+export CNPY_LIB=/home/gdubey/Documents/cnpy/build/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CNPY_LIB
+export VITIS_VERSION=2021.2
+export VITIS_HLS_VERSION=2021.2
+export VIVADO_VERSION=2021.2
+export VITIS=/tools/Xilinx/Vitis/${VITIS_VERSION}/
+export VITIS_HLS=/tools/Xilinx/Vitis_HLS/${VITIS_HLS_VERSION}/
+export VIVADO=/tools/Xilinx/Vivado/${VIVADO_VERSION}/
